@@ -1,4 +1,5 @@
 --Tarea
+
 module Split (mySplit) where
 
   mySplit :: String -> Char -> [String]

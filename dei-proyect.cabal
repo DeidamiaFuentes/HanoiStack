@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      ClassWork.Students
       Hanoi
   other-modules:
       Paths_dei_proyect
