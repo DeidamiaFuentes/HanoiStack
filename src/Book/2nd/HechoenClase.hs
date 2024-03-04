@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 
-module Book2_2 (isOperand, priority, digits, operands) where
+module Book2_2 (isOperand, priority, digits, operands, first, tupleFromExpression) where
 
 import Data.Char (isDigit)
 
@@ -31,3 +31,15 @@ operands [] = []
 operands (x : xs)
   | isOperand x = x : operands xs
   | otherwise = operands xs
+
+first :: [String] -> String -> String
+first [] _ = []
+first _ [] = []
+first x (a : ab)
+  | priority a > priority (head ab) = "(" ++ head x ++ [a]
+  | priority (head ab) > priority a = head x ++ [a]
+  | otherwise = a : head x
+
+tupleFromExpression :: String -> (String, Char, (String, Char, String))
+tupleFromExpression [] = ()
+tupleFromExpression xs | isDigit xs = (xs, ' ', ())
